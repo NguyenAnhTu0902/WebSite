@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use App\Http\Requests\AccountRequest;
 
 class AccountController extends Controller
 {
@@ -100,7 +101,7 @@ class AccountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postRegister(Request $request)
+    public function postRegister(AccountRequest $request)
     {
 //        $user = $this->userService->findByColumn(['email'=>$request->email])->pluck('email')->first();
 //        if($user != null ){

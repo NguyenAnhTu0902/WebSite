@@ -34,8 +34,10 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+//        $listUser = $this->userService->all();
         $users = $this->userService->searchAndPaginate('name',$request->get('search'));
-        return view('layouts.admin.users.index', compact('users'));
+        return view('layouts.adminLTE.users.index', compact('users'));
+//        return view('layouts.admin.users.index', compact('users'));
     }
 
     /**

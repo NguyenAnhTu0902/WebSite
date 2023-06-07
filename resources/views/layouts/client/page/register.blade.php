@@ -31,29 +31,52 @@
                     @endif
                     <form action="" method="post">
                         @csrf
+                        @if($errors->any())
+                            <div class="alert alert-danger text-center">
+                                Vui lòng kiểm tra lại dữ liệu
+                            </div>
+                        @endif
                         <div class="group-input">
                             <label for="name">Name *</label>
                             <input type="text" id="name" name="name">
+                            @error('name')
+                                <span style="color: red">{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="group-input">
                             <label for="email">Email address *</label>
                             <input type="text" id="email" name="email">
+                            @error('email')
+                            <span style="color: red">{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="group-input">
                             <label for="pass">Password *</label>
                             <input type="password" id="pass" name="password">
+                            @error('password')
+                            <span style="color: red">{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="group-input">
                             <label for="con-pass">Confirm Password *</label>
                             <input type="password" id="con-pass" name="password_confirmation">
+                            @error('password_confirmation')
+                            <span style="color: red">{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="group-input">
                             <label for="name">Phone *</label>
                             <input type="text" id="phone" name="phone">
+                            @error('phone')
+                            <span style="color: red">{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="group-input">
                             <label for="name">Address *</label>
                             <input type="text" id="adress" name="adress">
+                            @error('adress')
+                            <span style="color: red">{{$message}}</span>
+                            @enderror
                         </div>
                         <button type="submit" class="site-btn register-btn">Register</button>
                         <div class="switch-login">
