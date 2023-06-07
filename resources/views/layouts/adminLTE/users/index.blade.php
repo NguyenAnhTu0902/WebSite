@@ -51,7 +51,7 @@
                                             <td>{{ $user->created_at }}</td>
                                             <td>{{\App\Utilities\Constant::$user_level[$user->level]}}</td>
                                             <td>
-                                                <a href="" class="btn btn-info">Edit</a>
+                                                <a href="./admin/users/{{$user->id}}" class="btn btn-info">Edit</a>
                                                 <a onclick="deleteData({{ $user->id }})" class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
