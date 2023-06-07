@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 # Admin cms
 Route::prefix('admin')->middleware('CheckAdminLogin')->group(function() {
-    Route::redirect('','admin/users');
+//    Route::redirect('','admin/users');
+    Route::get('', [App\Http\Controllers\Cms\HomePageController::class, 'getDashboard']);
     Route::resource('users',\App\Http\Controllers\Cms\UserController::class);
     Route::resource('categories',\App\Http\Controllers\Cms\CategoryController::class);
     Route::resource('brands',\App\Http\Controllers\Cms\BrandController::class);
@@ -50,6 +51,7 @@ Route::prefix('cart')->group(function (){
 });
 
 Route::prefix('order')->group(function (){
+
     Route::get('',[App\Http\Controllers\Client\OrderController::class, 'index']);
     Route::post('/',[App\Http\Controllers\Client\OrderController::class, 'addOrder']);
     Route::get('/result',[App\Http\Controllers\Client\OrderController::class, 'result']);
