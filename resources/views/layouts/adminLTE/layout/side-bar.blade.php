@@ -25,8 +25,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item">
-                    <a href="/admin" class="nav-link">
+                <li class="nav-item ">
+                    <a href="/admin" class="nav-link {{(request()->segment(2)=='') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/users" class="nav-link">
+                    <a href="/admin/users" class="nav-link {{(request()->segment(2)=='users') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Users
@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/orders" class="nav-link">
+                    <a href="/admin/orders" class="nav-link {{(request()->segment(2)=='orders') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-shopping-bag"></i>
                         <p>
                             Orders
@@ -52,19 +52,19 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="/admin/products" class="nav-link {{(request()->segment(2)=='products') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-bread-slice"></i>
                         <p>Products</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="/admin/categories" class="nav-link {{(request()->segment(2)=='categories') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-tags"></i>
                         <p>Categories</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="/admin/brands" class="nav-link {{(request()->segment(2)=='brands') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-bold"></i>
                         <p>Brands</p>
                     </a>
