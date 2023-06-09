@@ -47,7 +47,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('layouts.admin.users.add_user');
+        return view('layouts.adminLTE.users.create');
     }
 
     /**
@@ -107,15 +107,6 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $data = $request->all();
-        if($request->get('password') != null) {
-            if($request->get('password') != $request->get('password_confirmation')) {
-                return back()->with('notification', 'ERROR: Confirm password does not match!!');
-            }
-            $data['password'] = bcrypt($request->get('password'));
-        }else {
-            unset($data['password']);
-        }
-
         if($request->hasFile('image')) {
             $data['avatar'] = Common::uploadFile($request->file('image'),'front/img/user');
 

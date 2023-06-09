@@ -1,5 +1,5 @@
 @extends('layouts.adminLTE.layout.master')
-@section('title','Edit User')
+@section('title','Create Users')
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -11,12 +11,11 @@
                 <div class="col-lg-10">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Edit User</h5>
+                            <h5 class="card-title">Create User</h5>
                         </div>
 
                         <div class="card-body">  <!-- Start Card body -->
-                            <form role="form" action="admin/users/{{$user->id}}" method="post" enctype="multipart/form-data">
-                                @method('PATCH')
+                            <form role="form" action="admin/users" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">
@@ -26,10 +25,10 @@
                                         <img style="height: 200px; cursor: pointer;"
                                              class="thumbnail" data-toggle="tooltip"
                                              title="Click to change the image" data-placement="bottom"
-                                             src="front/img/user/{{$user->avatar ?? 'default-avatar.jpg'}}" alt="Avatar">
+                                             src="theme/dist/img/add-image-icon.jpg" alt="Avatar">
                                         <input name="image" type="file" onchange="changeImg(this)"
                                                class="image form-control-file" style="display: none;" value="">
-                                        <input type="hidden" name="image_old" value="{{$user->avatar}}">
+                                        <input type="hidden" name="image_old" value="">
                                         <small class="form-text text-muted">
                                             Click on the image to change (required)
                                         </small>
@@ -39,25 +38,39 @@
                                     <label for="name" class="col-sm-2 col-form-label">
                                         User Name </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="name" placeholder="Name" value="{{$user->name}}">
+                                        <input type="text" class="form-control" name="name" placeholder="Name" >
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">Email </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="email" placeholder="Email" value="{{$user->email}}">
+                                        <input type="text" class="form-control" name="email" placeholder="Email" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="name" class="col-sm-2 col-form-label">PassWord </label>
+                                    <div class="col-sm-10">
+                                        <input name="password" id="password" placeholder="Password" type="password"
+                                               class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="name" class="col-sm-2 col-form-label">Confirm Password </label>
+                                    <div class="col-sm-10">
+                                        <input name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" type="password"
+                                               class="form-control" >
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">Address </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="adress" placeholder="Address" value="{{$user->adress}}">
+                                        <input type="text" class="form-control" name="adress" placeholder="Address" >
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">Phone </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="phone" placeholder="Email" value="{{$user->phone}}">
+                                        <input type="text" class="form-control" name="phone" placeholder="Phone">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -65,11 +78,7 @@
                                     <div class="col-sm-10">
                                         <select required name="level" id="level" class="form-control">
                                             @foreach(\App\Utilities\Constant::$user_level as $key => $value)
-                                                <option
-                                                    @if ($user->level == $key)
-                                                        {{"selected"}}
-                                                    @endif
-                                                    value="{{$key}}">
+                                                <option value={{$key}}>
                                                     {{$value}}
                                                 </option>
                                             @endforeach

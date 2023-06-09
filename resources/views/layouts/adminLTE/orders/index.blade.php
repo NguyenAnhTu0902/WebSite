@@ -1,5 +1,5 @@
 @extends('layouts.adminLTE.layout.master')
-@section('title','Users')
+@section('title','Orders')
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -10,7 +10,7 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">All Users</h3>
+                                <h3 class="card-title">All Orders</h3>
                                 <div class="card-tools">
                                     <form action="">
                                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -27,26 +27,23 @@
                                 </div>
                             </div>
                             <br>
-                            <div>
-                                <a href="admin/users/create" class="btn btn-sm btn-success" style="width:10%; margin-left: 20px;">Create</a>
-                            </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Avatar</th>
-                                        <th>User</th>
-                                        <th>Date</th>
-                                        <th>Level</th>
-                                        <th>Action</th>
+                                        <th>Customer / Products</th>
+                                        <th>Address</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($users as $user)
+                                    @foreach($orders as $order)
                                         <tr>
-                                            <td>{{ $user->id }}</td>
+                                            <td class="text-center text-muted">#{{$order->id}}</td>
                                             <td><img style="width: 60px; height: 60px;" src="front/img/user/{{$user->avatar ?? 'default-avatar.jpg'}}" alt="user-avatar" class="img-circle img-fluid"></td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->created_at }}</td>
@@ -77,7 +74,7 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="d-block card-footer">
-                                {{$users->links()}}
+                                {{orders->links()}}
                             </div>
                         </div>
                         <!-- /.card -->
